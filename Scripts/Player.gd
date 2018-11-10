@@ -3,13 +3,12 @@ extends "res://Scripts/Character.gd"
 var motion = Vector2()
 
 func _ready():
-	pass
-
+	Global.Player = self
 
 func _process(delta):
 	update_motion(delta)
 	move_and_slide(motion)
-	
+		
 func update_motion(delta):
 	look_at(get_global_mouse_position())
 	
