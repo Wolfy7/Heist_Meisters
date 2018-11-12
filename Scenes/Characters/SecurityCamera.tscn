@@ -54,7 +54,6 @@ texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Torch" parent="CameraBody" instance=ExtResource( 4 )]
-_sections_unfolded = [ "Shadow", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBody"]
 position = Vector2( 0.540375, 0 )
