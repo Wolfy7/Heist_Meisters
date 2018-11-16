@@ -1,19 +1,31 @@
 extends "res://Scripts/Character.gd"
 
+export var disguises = 3 #How many disguises do you start with
+export var disguise_duration = 5 #How lond disguise can last
+export var disguise_slowdown = 0.25
+
 var motion = Vector2()
 var vision_mode
 var vision_change_on_cooldown = false
 
-enum vision_modes {DARK, NIGHTVISION}
+var disguised = false
+var velocity_multiplier = 1
 
+enum vision_modes {DARK, NIGHTVISION}
 
 func _ready():
 	Global.Player = self
 	vision_mode = DARK
+	$Timer.wait_time = disguise_duration
+	reveal()
+	update_discuise_display()
 	
 func _process(delta):
 	update_motion(delta)
-	move_and_slide(motion)
+	move_and_slide(motion * velocity_multiplier)
+	if disguised:
+		$Label.rect_rotation = -rotation_degrees
+		$Label.text = str($Timer.time_left).pad_decimals(2)
 		
 func update_motion(delta):
 	look_at(get_global_mouse_position())
@@ -37,6 +49,8 @@ func _input(event):
 		cycle_vision_mode()
 		vision_change_on_cooldown = true
 		$VisionModeTimer.start()
+	if Input.is_action_just_pressed("toogle_disguise"):
+		toogle_disguise()
 		
 
 func cycle_vision_mode():
@@ -49,3 +63,43 @@ func cycle_vision_mode():
 	
 func _on_VisionModeTimer_timeout():
 	vision_change_on_cooldown = false
+	
+func toogle_disguise():
+	if disguised:
+		reveal()
+	elif disguises > 0:
+		disguise()
+
+func reveal():
+	$Label.visible = false
+	$Sprite.texture = load(Global.player_sprite)
+	$Light2D.texture = load(Global.player_sprite)
+	$LightOccluder2D.occluder = load(Global.player_occluder)
+	collision_layer = 1
+	
+	velocity_multiplier = 1
+	
+	disguised = false
+
+func disguise():
+	$Label.visible = true
+	$Sprite.texture = load(Global.box_sprite)
+	$Light2D.texture = load(Global.box_sprite)
+	$LightOccluder2D.occluder = load(Global.box_occluder)
+	collision_layer = 16
+	
+	velocity_multiplier = disguise_slowdown
+	$Timer.start()
+	
+	disguises -= 1
+	update_discuise_display()
+	disguised = true
+	
+func update_discuise_display():
+	get_tree().call_group("DisguiseDisplay", "update_disguises", disguises)
+		
+func collect_breifcase():
+	var loot = Node.new()
+	loot.set_name("briefcase")
+	add_child(loot)
+
