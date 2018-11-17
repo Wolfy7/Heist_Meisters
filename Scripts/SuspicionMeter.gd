@@ -11,10 +11,10 @@ func _process(delta):
 	value = suspicion
 
 func player_seen():
-	suspicion += suspicion_step
 	if suspicion == max_value:
 		end_game()
+	suspicion += suspicion_step
 		
 		
 func end_game():
-	get_tree().quit()
+	get_tree().change_scene("res://Scenes/GameOverScreen.tscn")

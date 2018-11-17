@@ -160,6 +160,7 @@ collision_mask = 9
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 position = Vector2( 214.464, 97.6241 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -280,6 +281,7 @@ tile_data = PoolIntArray( 65542, 3, 0, 131076, 1610612745, 0, 131102, -161061273
 _sections_unfolded = [ "Collision" ]
 
 [node name="Computers" type="Node2D" parent="."]
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="Computer" parent="Computers" instance=ExtResource( 10 )]
@@ -290,7 +292,6 @@ lock_group = "Office"
 
 [node name="VisionMode" type="CanvasModulate" parent="."]
 editor/display_folded = true
-visible = false
 color = Color( 0.0588235, 0.113725, 0.32549, 1 )
 script = ExtResource( 11 )
 
@@ -385,5 +386,5 @@ margin_bottom = 384.0
 position = Vector2( 157, 225.001 )
 
 [connection signal="timeout" from="Player/VisionModeTimer" to="Player" method="_on_VisionModeTimer_timeout"]
-[connection signal="combination" from="Computers/Computer" to="LockedDoors/LockedDoor" method="_on_Computer_combination"]
 [connection signal="combination" from="Computers/Computer" to="LockedDoors/LockedDoor2" method="_on_Computer_combination"]
+[connection signal="combination" from="Computers/Computer" to="LockedDoors/LockedDoor" method="_on_Computer_combination"]
