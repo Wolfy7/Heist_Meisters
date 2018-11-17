@@ -10,7 +10,7 @@
 [ext_resource path="res://Tilesets/AutotileWalls.tres" type="TileSet" id=8]
 [ext_resource path="res://Tilesets/Furnitures.tres" type="TileSet" id=9]
 [ext_resource path="res://Scenes/Computer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scripts/VisionMode.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/VisionMode.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Characters/Guard.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/CombinationGenerator.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Theme.tres" type="Theme" id=14]
@@ -160,7 +160,6 @@ collision_mask = 9
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-editor/display_folded = true
 position = Vector2( 214.464, 97.6241 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -186,12 +185,6 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-
-[node name="VisionModeTimer" type="Timer" parent="Player"]
-process_mode = 1
-wait_time = 1.5
-one_shot = false
-autostart = false
 
 [node name="SecurityCameras" type="Node2D" parent="."]
 editor/display_folded = true
@@ -290,21 +283,7 @@ rotation = 3.14159
 _sections_unfolded = [ "Collision", "Transform" ]
 lock_group = "Office"
 
-[node name="VisionMode" type="CanvasModulate" parent="."]
-editor/display_folded = true
-color = Color( 0.0588235, 0.113725, 0.32549, 1 )
-script = ExtResource( 11 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VisionMode"]
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
+[node name="VisionMode" parent="." instance=ExtResource( 11 )]
 
 [node name="Guards" type="Node2D" parent="."]
 editor/display_folded = true
@@ -385,6 +364,5 @@ margin_bottom = 384.0
 [node name="Briefcase" parent="." instance=ExtResource( 17 )]
 position = Vector2( 157, 225.001 )
 
-[connection signal="timeout" from="Player/VisionModeTimer" to="Player" method="_on_VisionModeTimer_timeout"]
 [connection signal="combination" from="Computers/Computer" to="LockedDoors/LockedDoor2" method="_on_Computer_combination"]
 [connection signal="combination" from="Computers/Computer" to="LockedDoors/LockedDoor" method="_on_Computer_combination"]

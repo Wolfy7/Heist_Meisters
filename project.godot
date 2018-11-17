@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Heist_Meisters"
-run/main_scene="res://Scenes/Levels/Level1.tscn"
+run/main_scene="res://Scenes/Levels/SplashScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

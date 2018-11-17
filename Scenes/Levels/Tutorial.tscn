@@ -1,0 +1,293 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://Tilesets/FloorTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Tilesets/AutotileWalls.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/VisionMode.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Briefcase.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Exit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Lightmaps/radial.png" type="Texture" id=9]
+[ext_resource path="res://Lightmaps/torchmap.png" type="Texture" id=10]
+[ext_resource path="res://GFX/Interface/PNG/crossair_blueOutline.png" type="Texture" id=11]
+[ext_resource path="res://SFX/message.wav" type="AudioStream" id=12]
+[ext_resource path="res://Scenes/ToturialGui.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 90.0699, 95.6804 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50.1412, 35.1896 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60.1275, 42.452 )
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Floors" type="TileMap" parent="."]
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 2
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65552, 0, 0, 65553, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327697, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524303, 0, 0, 524304, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 655370, 0, 0, 655371, 0, 0, 720906, 0, 0, 720907, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Walls" type="TileMap" parent="."]
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 2
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 262144, 1, 0, 262146, 2, 0, 262146, 3, 0, 262146, 4, 0, 262146, 5, 0, 262146, 6, 0, 262146, 7, 0, 262146, 8, 0, 262147, 9, 0, 262146, 10, 0, 262146, 11, 0, 262146, 12, 0, 262145, 15, 0, 262144, 16, 0, 262146, 17, 0, 262146, 18, 0, 262145, 65536, 0, 327682, 65544, 0, 262150, 65548, 0, 327682, 65550, 0, 262144, 65551, 0, 327681, 65554, 0, 327680, 65555, 0, 262145, 131072, 0, 327682, 131084, 0, 327680, 131085, 0, 262146, 131086, 0, 327681, 131091, 0, 327682, 196608, 0, 327682, 196624, 0, 327685, 196627, 0, 327682, 262144, 0, 327682, 262152, 0, 262144, 262153, 0, 262146, 262154, 0, 262146, 262155, 0, 262146, 262156, 0, 262146, 262157, 0, 262146, 262158, 0, 524292, 262159, 0, 458756, 262160, 0, 524291, 262162, 0, 262144, 262163, 0, 327681, 327680, 0, 327682, 327688, 0, 327682, 327694, 0, 589826, 327695, 0, 458757, 327696, 0, 327688, 327698, 0, 327682, 393216, 0, 327682, 393224, 0, 327682, 393226, 0, 262144, 393227, 0, 262146, 393228, 0, 262146, 393229, 0, 262146, 393230, 0, 327681, 393234, 0, 327682, 458752, 0, 327680, 458753, 0, 262146, 458754, 0, 262146, 458755, 0, 262146, 458756, 0, 262146, 458757, 0, 262146, 458758, 0, 262146, 458759, 0, 262146, 458760, 0, 327681, 458762, 0, 327682, 458770, 0, 327682, 524298, 0, 327682, 524300, 0, 262144, 524301, 0, 262146, 524302, 0, 262145, 524304, 0, 262144, 524305, 0, 262146, 524306, 0, 327681, 589833, 0, 262144, 589834, 0, 327681, 589836, 0, 327682, 589838, 0, 327680, 589839, 0, 262146, 589840, 0, 327681, 655369, 0, 327682, 655372, 0, 327682, 720905, 0, 327682, 720908, 0, 327680, 720909, 0, 262146, 720910, 0, 262146, 720911, 0, 262147, 720912, 0, 262146, 720913, 0, 262146, 720914, 0, 262146, 720915, 0, 262146, 720916, 0, 262146, 720917, 0, 262145, 786440, 0, 262144, 786441, 0, 327681, 786447, 0, 327682, 786453, 0, 327682, 851976, 0, 327682, 851983, 0, 327682, 851989, 0, 327682, 917512, 0, 327682, 917519, 0, 327682, 917525, 0, 327682, 983048, 0, 327682, 983055, 0, 327682, 983061, 0, 327682, 1048584, 0, 327682, 1048591, 0, 262150, 1048596, 0, 262144, 1048597, 0, 327681, 1114120, 0, 327682, 1114132, 0, 327682, 1179656, 0, 327680, 1179657, 0, 262145, 1179665, 0, 262144, 1179666, 0, 262146, 1179667, 0, 262146, 1179668, 0, 327681, 1245193, 0, 327680, 1245194, 0, 262146, 1245195, 0, 262146, 1245196, 0, 262146, 1245197, 0, 262146, 1245198, 0, 262146, 1245199, 0, 262146, 1245200, 0, 262146, 1245201, 0, 327681 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
+position = Vector2( 797.804, 224.54 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 190.582, 290.306 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="VisionMode" parent="." instance=ExtResource( 6 )]
+color = Color( 0.0117647, 0.0313726, 0.109804, 1 )
+
+[node name="Briefcase" parent="." instance=ExtResource( 7 )]
+position = Vector2( 761.605, 977.06 )
+
+[node name="Exit" parent="." instance=ExtResource( 8 )]
+margin_left = 1064.0
+margin_top = 790.0
+margin_right = 1321.0
+margin_bottom = 917.0
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 74.4271, 74.5029 )
+enabled = true
+editor_only = false
+texture = ExtResource( 9 )
+offset = Vector2( 0, 0 )
+texture_scale = 2.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Shadow" ]
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 581.301, 124.86 )
+rotation = 0.53611
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+editor_only = false
+texture = ExtResource( 10 )
+offset = Vector2( 320, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Shadow", "Transform" ]
+
+[node name="ObjectiveMarkers" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="MoveObjective" type="Position2D" parent="ObjectiveMarkers"]
+position = Vector2( 572.593, 215.436 )
+
+[node name="DoorObjective" type="Position2D" parent="ObjectiveMarkers"]
+position = Vector2( 798.294, 223.098 )
+
+[node name="NightVisionObjective" type="Position2D" parent="ObjectiveMarkers"]
+position = Vector2( 735.404, 513.455 )
+
+[node name="LootObjective" type="Position2D" parent="ObjectiveMarkers"]
+position = Vector2( 758.418, 973.461 )
+
+[node name="ExitObjective" type="Position2D" parent="ObjectiveMarkers"]
+position = Vector2( 1185.54, 868.117 )
+
+[node name="ObjectiveAreas" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="ObjectiveMove" type="Area2D" parent="ObjectiveAreas"]
+editor/display_folded = true
+position = Vector2( 660.727, 162.718 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveAreas/ObjectiveMove"]
+shape = SubResource( 1 )
+
+[node name="ObjectiveDoor" type="Area2D" parent="ObjectiveAreas"]
+position = Vector2( 859.437, 222.728 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveAreas/ObjectiveDoor"]
+shape = SubResource( 2 )
+
+[node name="ObjectiveNightVision" type="Area2D" parent="ObjectiveAreas"]
+editor/display_folded = true
+position = Vector2( 735.417, 513.598 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveAreas/ObjectiveNightVision"]
+shape = SubResource( 3 )
+
+[node name="ObjectivePointer" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -37.0535, 538.136 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light2D" type="Light2D" parent="ObjectivePointer"]
+enabled = true
+editor_only = false
+texture = ExtResource( 11 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="Tween" type="Tween" parent="."]
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="ToturialGui" parent="." instance=ExtResource( 13 )]
+
+[connection signal="body_entered" from="Briefcase" to="." method="_on_Briefcase_body_entered"]
+[connection signal="body_entered" from="ObjectiveAreas/ObjectiveMove" to="." method="_on_ObjectiveMove_body_entered"]
+[connection signal="body_entered" from="ObjectiveAreas/ObjectiveDoor" to="." method="_on_ObjectiveDoor_body_entered"]
+[connection signal="body_entered" from="ObjectiveAreas/ObjectiveNightVision" to="." method="_on_ObjectiveNightVision_body_entered"]

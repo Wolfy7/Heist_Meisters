@@ -5,7 +5,7 @@
 [ext_resource path="res://GFX/PNG/Hitman 1/hitman1_stand.png" type="Texture" id=3]
 [ext_resource path="res://Theme.tres" type="Theme" id=4]
 
-[node name="Player" index="0" instance=ExtResource( 1 )]
+[node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 disguises = 3
@@ -66,4 +66,11 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Theme", "custom_styles" ]
 
+[node name="VisionModeTimer" type="Timer" parent="." index="6"]
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="Timer" to="." method="reveal"]
+[connection signal="timeout" from="VisionModeTimer" to="." method="_on_VisionModeTimer_timeout"]
